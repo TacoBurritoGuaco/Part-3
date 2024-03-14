@@ -9,12 +9,12 @@ public class Villager : MonoBehaviour
     Animator animator;
 
     bool clickingOnSelf;
-    bool isSelected;
+    protected bool isSelected;
     public GameObject highlight;
 
     protected Vector2 destination;
     Vector2 movement;
-    float speed = 3;
+    public float speed = 3;
 
     void Start()
     {
@@ -63,7 +63,7 @@ public class Villager : MonoBehaviour
         rb.MovePosition(rb.position + movement.normalized * speed * Time.deltaTime);
     }
 
-    void Update()
+    protected virtual void Update()
     {
         //left click: move to the click location
         if (Input.GetMouseButtonDown(0) && isSelected && !clickingOnSelf)
