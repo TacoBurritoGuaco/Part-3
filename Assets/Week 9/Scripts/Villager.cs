@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -15,6 +17,7 @@ public class Villager : MonoBehaviour
     protected Vector2 destination;
     Vector2 movement;
     public float speed = 3;
+    public float scaleFloat;
 
     void Start()
     {
@@ -43,7 +46,6 @@ public class Villager : MonoBehaviour
     private void FixedUpdate()
     {
         movement = destination - (Vector2)transform.position;
-
         //flip the x direction of the game object & children to face the direction we're walking
         if(movement.x > 0)
         {
@@ -67,7 +69,7 @@ public class Villager : MonoBehaviour
     private void Update()
     {
         //left click: move to the click location
-        if (Input.GetMouseButtonDown(0) && isSelected && !clickingOnSelf)
+        if (Input.GetMouseButtonDown(0) && isSelected && !clickingOnSelf && !EventSystem.current.IsPointerOverGameObject())
         {
             destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }

@@ -10,6 +10,7 @@ public class CharacterControl : MonoBehaviour
     public TMP_Dropdown dropdown;
     public TextMeshProUGUI selectUI;
     public List<Villager> villagerList = new List<Villager>();
+    float villagerSelected;
     public static CharacterControl intance; //A variable that is a reference to a particular object of this class
     //Because it is a static variable, it allows us to speak with it in a static function
     public static Villager SelectedVillager { get; private set; }
@@ -31,9 +32,15 @@ public class CharacterControl : MonoBehaviour
         intance.selectUI.text = SelectedVillager.name;
     }
 
-    public void changeCharacter(int value)
+    public void changeCharacter(Int32 value)
     {
         SetSelectedVillager(villagerList[value]);
+        villagerSelected = value;
+    }
+
+    public void characterScale(Single value)
+    {
+        villagerList[(int)villagerSelected].transform.localScale = Vector3.Lerp(new Vector3 (0.5f, 0.5f, 0.5f), new Vector3(2, 2, 2), value);
     }
     ////void Update()
     ////{
