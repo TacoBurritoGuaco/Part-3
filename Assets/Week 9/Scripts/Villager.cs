@@ -58,6 +58,7 @@ public class Villager : MonoBehaviour
         if (movement.magnitude < 0.1)
         {
             movement = Vector2.zero;
+            speed = 3;
         }
 
         rb.MovePosition(rb.position + movement.normalized * speed * Time.deltaTime);
