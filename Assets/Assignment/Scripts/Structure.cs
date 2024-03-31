@@ -29,6 +29,13 @@ public class Structure : MonoBehaviour
     //The assignment controller, which collects resources
     public GameObject manager; //the object the manager script is attached to
 
+    //The variables related to a building's building cost
+    Coroutine resourceCheck; //the couroutine in charge of checking if the resource requirements have been met
+    public Canvas costCanvas; //the canvas displaying the cost of this building
+    public List<Resource> costType = new List<Resource>(); //a list of resource types this building costs
+    public List<float> amount = new List<float>(); //the amount of each resource needed to meet the building's cost
+    //NOTE: these will be setup in the prefabs of the buildings
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -53,7 +60,7 @@ public class Structure : MonoBehaviour
     //OnMouseDown is called whenever the object is clicked
     //This is specifically very important because clicking on the object handles every aspect of structures
     protected virtual void OnMouseDown() {
-        builder = StartCoroutine(build()); //Start the "build" coroutine when clicking on the building
+        resourceCheck = StartCoroutine(cost()); //check if the cost of the building is met
     }
 
     //When the button is clicked!
@@ -74,6 +81,43 @@ public class Structure : MonoBehaviour
         return myResource; //return the resource type
     }
 
+    protected virtual IEnumerator cost()
+    {
+        float successNumber = 0; //the number of times the resource has been substracted
+        //tempList that gets the assignment manager resource array
+        Resource[] tempResourceList = manager.GetComponent<AssignmentManager>().resourceArray;
+        //tempList that gets the float assignment manager array
+        float[] tempFloatList = manager.GetComponent<AssignmentManager>().numResourcesArray;
+
+        //for each costType of the structure
+        for (int i = 0; i < costType.Count; i++)
+        {
+            //for each number in the numsResourceArray
+            //Also correspondant with each resource type
+            for (int j = 0; j < tempResourceList.Length; j++)
+            {
+                if (tempResourceList[j] == costType[i])
+                { //identify if the corresponding resource in the resource array matches a needed resource
+                    if (tempFloatList[j] >= amount[i])
+                    { //once identified, check if the corresponding amount (float) is equal to or greater than the currently available player resources
+                        tempFloatList[j] -= amount[i]; //substract this much from tempFloatList
+                        successNumber++; //increase number of succeses by 1
+                    }
+                }
+            }
+        }
+        //if the number of succeses is equal to the amount of resources available
+        if (successNumber == 2)
+        {
+            builder = StartCoroutine(build()); //Start the "build" coroutine when clicking on the building
+        }
+        else
+        {
+            yield return null; //return null (do NOT build)
+        }
+        
+    }
+
     //Building animation Couroutine.
     //Largely similar to the week 10 building couroutine with slight tweaks/cleanup
     //It is also now called at a different time.
@@ -81,6 +125,7 @@ public class Structure : MonoBehaviour
     {
         if (hasBeenPlaced) yield break; //stops this build couroutine from working once its happened once 
         hasBeenPlaced = true; //Has been placed is set to true
+        costCanvas.GameObject().SetActive(false); //set the cost UI to false
         clock.GameObject().SetActive(true); //Set the clock to active
         //Sets all the buildings at a scale of 0
         for (int i = 0; i < buildingParts.Count; i++)
@@ -109,7 +154,7 @@ public class Structure : MonoBehaviour
             time += Time.deltaTime * 1; //increase the Clock's time based on in-game seconds
             time = time % timerEnd; //then, turns this into a remainder based on the timerEnd value
             clock.value = time; //set clock.value to this time variable
-            yield break; //Yield return 
+            yield break; //Yield break
         }
         resourceAmount += 1; //increase the resource amount by 1
         time = 0; //reset clock

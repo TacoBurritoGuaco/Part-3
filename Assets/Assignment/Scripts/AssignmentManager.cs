@@ -7,6 +7,7 @@ public enum Resource { Wood, Stone, Metal, Magic } //enum that represents the re
 public class AssignmentManager : MonoBehaviour
 {
     public float[] numResourcesArray = { 0, 0, 0, 0 }; //array of the number of resources currently aquired by the player
+    public Resource[] resourceArray = {Resource.Wood, Resource.Stone, Resource.Metal, Resource.Magic }; //a list of every possible resource type
 
     public List<Structure> structureList = new List<Structure>(); //list of structures currently placed (NOT instantiated (this will be important later))
     public static Structure currentStructure; //the currently instantiated structure (using the dropdownUI)
@@ -30,5 +31,5 @@ public class AssignmentManager : MonoBehaviour
                 numResourcesArray[3] += structure.reapResource();
                 break;
         }
-    }
+    } 
 }
