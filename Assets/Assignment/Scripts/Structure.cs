@@ -22,10 +22,12 @@ public class Structure : MonoBehaviour
     //as well as when the clock will end and the building will create a resource.
     public float time; //the time on the clock
     //Resource
-    public Canvas resourceCanvas; //the button that the player must click to gain the correspondant resource
     public TextMeshProUGUI resourceText; //the text on the resource button.
     public Resource myResource; //the building's resource
     public float resourceAmount; //the amount of resources currently created by this building
+
+    //The assignment controller, which collects resources
+    public GameObject manager; //the object the manager script is attached to
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -52,6 +54,24 @@ public class Structure : MonoBehaviour
     //This is specifically very important because clicking on the object handles every aspect of structures
     protected virtual void OnMouseDown() {
         builder = StartCoroutine(build()); //Start the "build" coroutine when clicking on the building
+    }
+
+    //When the button is clicked!
+    protected virtual void callClick()
+    {
+        manager.SendMessage("resourceGain", this); //calls upon the "resource gain" function of the manager
+        resourceAmount = 0; //resets the amount of resource back to 0
+        resourceText.text = "X " + resourceAmount; //updates textGUI to reflect the previous reset
+    }
+    //Function that returns the amount of the resource this building produces
+    public float reapResource()
+    {
+        return resourceAmount; //return the amount of the resource
+    }
+    //Function that returns the type of resource this building produces
+    public Resource resourceType()
+    {
+        return myResource; //return the resource type
     }
 
     //Building animation Couroutine.
@@ -93,7 +113,6 @@ public class Structure : MonoBehaviour
         }
         resourceAmount += 1; //increase the resource amount by 1
         time = 0; //reset clock
-        resourceCanvas.GameObject().SetActive(true); //sets the resource canvas to active 
         resourceText.text = "X " + resourceAmount; //increases the amount of resources in the textUI
     }
 }
