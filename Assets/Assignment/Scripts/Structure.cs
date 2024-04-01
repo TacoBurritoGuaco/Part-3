@@ -36,11 +36,16 @@ public class Structure : MonoBehaviour
     public List<float> amount = new List<float>(); //the amount of each resource needed to meet the building's cost
     //NOTE: these will be setup in the prefabs of the buildings
 
+    //Animation variables
+    public Animator anim; //the structure's animator controller
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
         myResource = Resource.Wood; //sets the standard resource to wood (to be overriden)
         timerEnd = 10; //the standard time it takes for the building to create a resource (to be overriden)
+        anim = GetComponent<Animator>(); //gets the animator controller
+        manager = GameObject.Find("Manager"); //sets this to the manager in the hiarchy
         for (int i = 0; i < buildingParts.Count; i++)
         {
             buildingParts[i].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f); //make the building parts transparent upon being initialized
@@ -145,6 +150,7 @@ public class Structure : MonoBehaviour
             }
             interpolation = 0;
         }
+        anim.SetTrigger("productionStart"); //activates the structures' "activated" animation
     }
     //coroutine that produces resources
     protected virtual IEnumerator produce()
