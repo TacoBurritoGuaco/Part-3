@@ -1270,9 +1270,9 @@ MonoBehaviour:
     m_Options:
     - m_Text: Axe Machine
       m_Image: {fileID: 0}
-    - m_Text: Option B
+    - m_Text: Stonepin
       m_Image: {fileID: 0}
-    - m_Text: Option C
+    - m_Text: Metallistic
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1837,20 +1837,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropdown: {fileID: 909601651}
   numResourcesArray:
-  - 15
-  - 4
-  - 0
-  - 0
+  - 20
+  - 20
+  - 20
+  - 20
   resourceArray: 00000000010000000200000003000000
-  structureList:
-  - {fileID: 3501329507957606393, guid: 9ea168562fdce1a4c8e2ad27000a48ad, type: 3}
-  - {fileID: 3501329507957606393, guid: 9ea168562fdce1a4c8e2ad27000a48ad, type: 3}
-  - {fileID: 3501329507957606393, guid: 9ea168562fdce1a4c8e2ad27000a48ad, type: 3}
   resourceList:
   - {fileID: 62599886}
   - {fileID: 462547684}
   - {fileID: 1178067981}
   - {fileID: 327861421}
+  structureList:
+  - {fileID: 3501329507957606393, guid: 9ea168562fdce1a4c8e2ad27000a48ad, type: 3}
+  - {fileID: 4745130732140757962, guid: 0c27152bfd4d99340a5cbd9f69304698, type: 3}
+  - {fileID: 3501329507957606393, guid: 9ea168562fdce1a4c8e2ad27000a48ad, type: 3}
 --- !u!1 &1560842133
 GameObject:
   m_ObjectHideFlags: 0
@@ -2371,7 +2371,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300134, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  m_Sprite: {fileID: 21300138, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
