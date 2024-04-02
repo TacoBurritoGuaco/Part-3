@@ -8,7 +8,7 @@ public class Stonepin : Structure
     protected override void Start()
     {
         base.Start(); //Base of start (yipeee)
-        myResource = Resource.Stone; //the stone resource
+        myResource = Resource.Stone; //stonepin's output resource (stone)
         timerEnd = 15; //increase the time it takes for stone to be gained
     }
 }

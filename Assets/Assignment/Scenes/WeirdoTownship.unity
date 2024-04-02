@@ -1276,6 +1276,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Coservatory
       m_Image: {fileID: 0}
+    - m_Text: Treasury
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1839,10 +1841,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropdown: {fileID: 909601651}
   numResourcesArray:
-  - 10
-  - 10
-  - 5
-  - 0
+  - 99
+  - 99
+  - 99
+  - 99
   resourceArray: 00000000010000000200000003000000
   resourceList:
   - {fileID: 62599886}
@@ -1854,6 +1856,7 @@ MonoBehaviour:
   - {fileID: 4745130732140757962, guid: 0c27152bfd4d99340a5cbd9f69304698, type: 3}
   - {fileID: 2813535283301617082, guid: 6fc16df9e6427b54a86aa0ecaa9e2196, type: 3}
   - {fileID: 7509506479810392540, guid: 7a41f6ffb8d5e6f45b20fdecc74bf941, type: 3}
+  - {fileID: 863936108013801809, guid: acfa8136974f26345b1e373b3b563eaa, type: 3}
 --- !u!1 &1560842133
 GameObject:
   m_ObjectHideFlags: 0

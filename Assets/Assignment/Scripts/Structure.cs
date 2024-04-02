@@ -183,7 +183,7 @@ public class Structure : MonoBehaviour
     //coroutine that produces resources
     protected virtual IEnumerator produce()
     {
-        if (time < (timerEnd - 0.01)) //if the clock has not reached the timer end
+        if (time < (timerEnd - 0.02)) //if the clock has not reached the timer end
         {
             time += Time.deltaTime * 1; //increase the Clock's time based on in-game seconds
             time = time % timerEnd; //then, turns this into a remainder based on the timerEnd value
