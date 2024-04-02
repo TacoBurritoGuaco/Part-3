@@ -1074,6 +1074,7 @@ MonoBehaviour:
   resourceAmount: 0
   manager: {fileID: 0}
   costCanvas: {fileID: 3174127162703722662}
+  identificatorNums: []
   costType: 0100000000000000
   amount:
   - 1
@@ -1181,7 +1182,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.009333193, y: 0.568985}
+  m_Offset: {x: 0.15347433, y: 0.52093863}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1192,7 +1193,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6767594, y: 4.2874684}
+  m_Size: {x: 4.7517624, y: 4.143327}
   m_EdgeRadius: 0
 --- !u!95 &1809049362715380033
 Animator:

@@ -1274,6 +1274,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Metallistic
       m_Image: {fileID: 0}
+    - m_Text: Coservatory
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1837,10 +1839,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropdown: {fileID: 909601651}
   numResourcesArray:
-  - 20
-  - 20
-  - 20
-  - 20
+  - 10
+  - 10
+  - 5
+  - 0
   resourceArray: 00000000010000000200000003000000
   resourceList:
   - {fileID: 62599886}
@@ -1850,7 +1852,8 @@ MonoBehaviour:
   structureList:
   - {fileID: 3501329507957606393, guid: 9ea168562fdce1a4c8e2ad27000a48ad, type: 3}
   - {fileID: 4745130732140757962, guid: 0c27152bfd4d99340a5cbd9f69304698, type: 3}
-  - {fileID: 3501329507957606393, guid: 9ea168562fdce1a4c8e2ad27000a48ad, type: 3}
+  - {fileID: 2813535283301617082, guid: 6fc16df9e6427b54a86aa0ecaa9e2196, type: 3}
+  - {fileID: 7509506479810392540, guid: 7a41f6ffb8d5e6f45b20fdecc74bf941, type: 3}
 --- !u!1 &1560842133
 GameObject:
   m_ObjectHideFlags: 0
@@ -2307,7 +2310,7 @@ Transform:
   m_GameObject: {fileID: 2030099044}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.23, y: -0.71000004, z: -10}
+  m_LocalPosition: {x: -1.23, y: -0.83000004, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
