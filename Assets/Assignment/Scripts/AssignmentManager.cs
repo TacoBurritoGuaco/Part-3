@@ -12,9 +12,19 @@ public class AssignmentManager : MonoBehaviour
     public float[] numResourcesArray = { 0, 0, 0, 0 }; //array of the number of resources currently aquired by the player
     public Resource[] resourceArray = {Resource.Wood, Resource.Stone, Resource.Metal, Resource.Magic }; //a list of every possible resource type
 
+    public List<TextMeshProUGUI> resourceList = new List<TextMeshProUGUI>(); //List of resource text to be updated
     public List<GameObject> structureList = new List<GameObject>(); //list of structures currently placed (NOT instantiated (this will be important later))
     public static GameObject currentStructure; //the currently instantiated structure (using the dropdownUI)
-
+    
+    //update uses the list of text and updates their text to match how many resources the player has
+    public void Update()
+    {
+        //For every text in the list, and by proxy, every resource
+        for (int i = 0; i < resourceList.Count; i++)
+        {
+            resourceList[i].text = "X " + numResourcesArray[i]; //Updates the corresponding text using NumResourcesArray
+        }
+    }
     //the static function that selects the current structure highlighted in the dropdown
     //based in large part to how we did this in the week 9 (10?) characterControl script
     public static void SelectStructure(GameObject structure)
