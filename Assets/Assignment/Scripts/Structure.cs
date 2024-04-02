@@ -14,6 +14,7 @@ public class Structure : MonoBehaviour
     public bool hasBeenPlaced = false; //has this structure been placed
     public float interpolation; //interpolation value
     Coroutine builder; //The "Build" couroutine
+    public bool overStructure = false; //Is the structure currently over another structure's collision radius
 
     //Variables related to resource production
     //Time
@@ -67,11 +68,24 @@ public class Structure : MonoBehaviour
     //OnMouseDown is called whenever the object is clicked
     //This is specifically very important because clicking on the object handles every aspect of structures
     protected virtual void OnMouseDown() {
-        //prevents you from clicking if you are hovering over a UI element (like the dropdown)
-        if (!EventSystem.current.IsPointerOverGameObject())
+        //prevents you from placing if you are hovering over a UI element (like the dropdown)
+        //Additionally, prevents you from placing if you are too close to a building
+        if (!EventSystem.current.IsPointerOverGameObject() && !overStructure)
         {
             resourceCheck = StartCoroutine(cost()); //check if the cost of the building is met
         }
+    }
+
+    //On collision enter function used for determining if the object is currently over another object's collision
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        overStructure = true; //Turns this to true
+    }
+
+    //Used to then un-check the aformentioned boolean
+    protected virtual void OnCollisionExit2D(Collision2D collision)
+    {
+        overStructure = false; //turns this to false
     }
 
     //When the button is clicked!

@@ -1258,7 +1258,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3086304890472478208}
   - component: {fileID: 4060228577126946034}
-  - component: {fileID: 8276773339815485549}
   - component: {fileID: 7504418773405940207}
   - component: {fileID: 6406899587622998274}
   - component: {fileID: 1103417098923543877}
@@ -1305,7 +1304,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 4745130732140757962}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -1322,49 +1321,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!66 &8276773339815485549
-CompositeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4745130732140757962}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
-  m_GenerationType: 0
-  m_EdgeRadius: 0
-  m_ColliderPaths: []
-  m_CompositePaths:
-    m_Paths: []
-  m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.00005
-  m_UseDelaunayMesh: 0
-  m_CompositeGameObject: {fileID: 4745130732140757962}
 --- !u!61 &7504418773405940207
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1397,7 +1353,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.061962366, y: 0.40057158}
+  m_Offset: {x: 0.04217565, y: -0.82251096}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1408,7 +1364,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.813459, y: 3.571712}
+  m_Size: {x: 2.7475574, y: 4.078778}
   m_EdgeRadius: 0
 --- !u!95 &6406899587622998274
 Animator:
@@ -1458,6 +1414,7 @@ MonoBehaviour:
   - {fileID: 8392802487074417617}
   hasBeenPlaced: 0
   interpolation: 0
+  overStructure: 0
   clock: {fileID: 4954506375527506490}
   timerEnd: 0
   time: 0
