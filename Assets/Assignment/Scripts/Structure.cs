@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class Structure : MonoBehaviour
 {
@@ -66,7 +67,11 @@ public class Structure : MonoBehaviour
     //OnMouseDown is called whenever the object is clicked
     //This is specifically very important because clicking on the object handles every aspect of structures
     protected virtual void OnMouseDown() {
-        resourceCheck = StartCoroutine(cost()); //check if the cost of the building is met
+        //prevents you from clicking if you are hovering over a UI element (like the dropdown)
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            resourceCheck = StartCoroutine(cost()); //check if the cost of the building is met
+        }
     }
 
     //When the button is clicked!
@@ -174,5 +179,11 @@ public class Structure : MonoBehaviour
         resourceAmount += 1; //increase the resource amount by 1
         time = 0; //reset clock
         resourceText.text = "X " + resourceAmount; //increases the amount of resources in the textUI
+    }
+
+    //does as it says, destroying this game object
+    public void destroyThis()
+    {
+        Destroy(gameObject); //destroys this gameObject when called instantly
     }
 }
