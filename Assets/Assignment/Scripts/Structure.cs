@@ -32,6 +32,7 @@ public class Structure : MonoBehaviour
     //The variables related to a building's building cost
     Coroutine resourceCheck; //the couroutine in charge of checking if the resource requirements have been met
     public Canvas costCanvas; //the canvas displaying the cost of this building
+    public List<float> identificatorNums = new List<float>(); //This list is used to identify the spot on the tempList that amount should substract from
     public List<Resource> costType = new List<Resource>(); //a list of resource types this building costs
     public List<float> amount = new List<float>(); //the amount of each resource needed to meet the building's cost
     //NOTE: these will be setup in the prefabs of the buildings
@@ -88,6 +89,8 @@ public class Structure : MonoBehaviour
 
     protected virtual IEnumerator cost()
     {
+        if (hasBeenPlaced) yield break; //stops this build couroutine from working once the cost of the building has been met
+                                        //i.e the building has been placed
         float successNumber = 0; //the number of times the resource has been substracted
         //tempList that gets the assignment manager resource array
         Resource[] tempResourceList = manager.GetComponent<AssignmentManager>().resourceArray;
@@ -105,22 +108,28 @@ public class Structure : MonoBehaviour
                 { //identify if the corresponding resource in the resource array matches a needed resource
                     if (tempFloatList[j] >= amount[i])
                     { //once identified, check if the corresponding amount (float) is equal to or greater than the currently available player resources
-                        tempFloatList[j] -= amount[i]; //substract this much from tempFloatList
+                        identificatorNums.Add(j); //saves the j value from the tempFloatList
                         successNumber++; //increase number of succeses by 1
                     }
                 }
             }
         }
-        //if the number of succeses is equal to the amount of resources available
-        if (successNumber == 2)
+        //if the number of succeses is equal to the amount of resources needed to build this
+        if (successNumber == costType.Count)
         {
+            //for each costType of the structure
+            for (int i = 0; i < costType.Count; i++)
+            {
+                tempFloatList[(int)identificatorNums[i]] -= amount[i]; //Substract the correspondant amount cost by the specific value in the tempfloatList
+                //based on the previously saved identificator num
+            }
+            identificatorNums.Clear(); //clears the identificatorNums list
             builder = StartCoroutine(build()); //Start the "build" coroutine when clicking on the building
-        }
-        else
+        } else
         {
-            yield return null; //return null (do NOT build)
+            identificatorNums.Clear(); //clears the identificatorNums list
+            yield return null;
         }
-        
     }
 
     //Building animation Couroutine.
