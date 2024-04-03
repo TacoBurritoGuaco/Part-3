@@ -8,7 +8,7 @@ public class Treasury : Structure
     {
         base.Start(); //Base of start (yipeee)
         TreasureRandomizer(); //Randomizes the resource it produces upon being instantiated
-        timerEnd = 30; //increase the time it takes for the random resource to be gained
+        timerEnd = 15; //increase the time it takes for the random resource to be gained
     }
     //Function that upon being called randomizes the resource that this building produces
     private void TreasureRandomizer()
